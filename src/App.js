@@ -1,6 +1,7 @@
 import React from 'react'
 // import * as BooksAPI from './BooksAPI'
 import './App.css'
+import Search from './containers/SearchBooks';
 
 class BooksApp extends React.Component {
   state = {
@@ -15,6 +16,7 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
+        <Search />
           <div className="list-books">
             <div className="list-books-title">
               <h1>MyReads</h1>
