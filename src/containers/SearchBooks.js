@@ -22,8 +22,7 @@ class SearchBooks extends Component {
 
     bookIntoShelfHandler = (idObj, event) => {
        const  readStatus = event.target.value
-       console.log( booksAPI.update(idObj, readStatus ).then(res => console.log(res)) )
-       console.log( booksAPI.getAll().then(res => console.log(res)))
+       booksAPI.update(idObj, readStatus ).then(res => console.log(res))
     }
     render() {
         return (

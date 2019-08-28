@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Book from '../Book/Book';
+import Book from '../BookShelf/Shelf/Book';
 
 const searchBooksGrid = (props) => {
     const { shownBooks } = props;

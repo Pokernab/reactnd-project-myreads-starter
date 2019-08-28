@@ -141,9 +141,5 @@
   <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button>
 </div>
 </div>
-</div>
-)
-}
-}
 
 export default BooksApp
