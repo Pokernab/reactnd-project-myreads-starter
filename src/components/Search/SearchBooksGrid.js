@@ -5,15 +5,15 @@ import Book from '../Book/Book';
 const searchBooksGrid = (props) => {
     const { shownBooks } = props;
     let bookArr = [];
-    if (shownBooks[0] === 'undefined' && shownBooks.Length) {
-        booksArr = []
-    }
+    if (shownBooks.error) {  bookArr = shownBooks.items }
     else {
         for (let book of shownBooks) {
             bookArr.push(
                 <li key={book.id}>
                     <Book
-                        URL={book.imageLinks.smallThumbnail}
+                        bookIntoShelf={props.bookIntoShelf}
+                        id={book}
+                        URL={book.imageLinks ? book.imageLinks.smallThumbnail : null}
                         title={book.title}
                         author={book.authors}
                     />
