@@ -1,50 +1,35 @@
 import React, { Component, Fragment } from 'react';
 
 import * as booksAPI from '../BooksAPI';
+import { getBooksFromAPI } from './Funcs/funcs';
 import SearchInput from '../components/Search/SearchInput';
 import SearchBooksGrid from '../components/Search/SearchBooksGrid';
+
+//State -> 
+// searchQuery -> value of search input
+// shelfBooks -> books that were on the shelf once we loaded this component
+// shownBooks -> currently shown books on the page
 
 class SearchBooks extends Component {
     state = {
         shelfBooks: [],
         searchQuery: '',
         shownBooks: [],
-        error: ''
     };
     componentDidMount() {
-        booksAPI.getAll().then( res => this.setState({shelfBooks: res}) )
+        //Fetching all books that are currently on shelf
+        booksAPI.getAll().then( res => this.setState({shelfBooks: res}) );
     }
-    // query an empty string ? return an empty array : return querySearch on it
-    getBooksFromAPI = () => {
-        const shelfBooks = [...this.state.shelfBooks];
-        let updatedObj = []
-        if (this.state.searchQuery.trimLeft() === '') { this.setState({ shownBooks: [] }) }
-        else booksAPI.search(this.state.searchQuery).then(searchBooks => {
-             const searchBookResult = searchBooks.filter(searchBook => {
-                let isShelfed = false
-                for (let shelfBook of shelfBooks) {
-                    if (shelfBook.id === searchBook.id && !isShelfed) {
-                        updatedObj.push(shelfBook)
-                         isShelfed = true
-                         break;
-                    }
-                    else   
-                    isShelfed = false;
-                }
-               return !isShelfed 
-            });
-             this.setState({ shownBooks: searchBookResult.concat(updatedObj) }) })
-    };
-    //change query state  -> Search for books with it
+    //Listen to  input value and set searchQuery equals to it -> use getBooksFromAPI func passing (API, this)
     changeQueryHandler = (event) => {
-        this.setState({ searchQuery: event.target.value }, () => this.getBooksFromAPI())
-        
+        this.setState({ searchQuery: event.target.value }, () => getBooksFromAPI(booksAPI, this));     
     };
-
+    //Change the shelf of a current book. (idObj = Book object, event = selected value)
     bookIntoShelfHandler = (idObj, event) => {
         const readStatus = event.target.value
         booksAPI.update(idObj, readStatus)
-    }
+    };
+    
     render() {
         return (
             <Fragment>

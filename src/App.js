@@ -1,17 +1,16 @@
-import React from 'react'
+import React from 'react';
 
-import './App.css'
+import './App.css';
 import Search from './containers/SearchBooks';
 import MainPage from './containers/MainPage';
 import { Route, Switch } from 'react-router-dom';
 
 class BooksApp extends React.Component {
-
   render() {
     const routes = (
       <Switch>
           <Route path='/search'  exact component={Search} />
-          <Route path='/'             component={MainPage} />
+          <Route path='/'  component={MainPage} />
       </Switch>
     );
     return (
@@ -22,4 +21,4 @@ class BooksApp extends React.Component {
   };
 };
 
-export default BooksApp
+export default BooksApp;
