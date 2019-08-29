@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Book from '../BookShelf/Shelf/Book';
+import Book from '../Book/Book';
 
 const searchBooksGrid = (props) => {
     const { shownBooks } = props;
@@ -11,8 +11,9 @@ const searchBooksGrid = (props) => {
             bookArr.push(
                 <li key={book.id}>
                     <Book
+                        shelf={book.shelf}
                         bookIntoShelf={props.bookIntoShelf}
-                        id={book}
+                        book={book}
                         URL={book.imageLinks ? book.imageLinks.smallThumbnail : null}
                         title={book.title}
                         author={book.authors}
