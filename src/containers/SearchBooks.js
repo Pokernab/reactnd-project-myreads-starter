@@ -25,7 +25,7 @@ class SearchBooks extends Component {
         this.setState({ searchQuery: event.target.value }, () => getBooksFromAPI(booksAPI, this));     
     };
     //Change the shelf of a current book. (idObj = Book object, event = selected value)
-    bookIntoShelfHandler = (idObj, event) => {
+    bookIntoShelfHandler = (idObj, event) =>  {
         const readStatus = event.target.value
         booksAPI.update(idObj, readStatus)
     };
