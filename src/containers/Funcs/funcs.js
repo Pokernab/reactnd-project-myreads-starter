@@ -1,4 +1,3 @@
-
 // updateObj = Books that are on a shelf & books that were found from searchAPI
 //filter is used to remove all books that are the same as the books on the shelf (pushing those books to updateObj)
 // concating the updateObj into searchResult -> all the shelfs books will have a shelf prop 

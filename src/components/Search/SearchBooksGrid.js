@@ -5,7 +5,9 @@ import Book from '../Book/Book';
 const searchBooksGrid = (props) => {
     const { shownBooks } = props;
     let bookArr = [];
-    if (shownBooks.error) {  bookArr = shownBooks.items }
+    if (shownBooks === []) {
+         bookArr = [] 
+    }
     else {
         for (let book of shownBooks) {
             bookArr.push(
